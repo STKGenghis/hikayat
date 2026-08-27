@@ -1,0 +1,19 @@
+scenario_number,title,section,narrative_compound,negative_consequence_compound,compound_shift,shifted_more_negative
+1,AI Companion for Social Anxiety,I. Emotional Over-dependence on Misaligned AI,0.296,-0.5267,-0.8227,True
+2,Digital Replica of a Deceased Loved One,I. Emotional Over-dependence on Misaligned AI,-0.2023,-0.7184,-0.5161,True
+3,Virtual Friend Reinforcing Negative Self-Image,I. Emotional Over-dependence on Misaligned AI,-0.7964,-0.8442,-0.0478,False
+1,Mental Health App Data Breach,"II. Breach of Privacy, Fraud, and Deepfakes",0.5719,-0.7269,-1.2988,True
+2,Deepfake Political Candidate Video,"II. Breach of Privacy, Fraud, and Deepfakes",0.4019,-0.25,-0.6519,True
+3,Voice Cloning Fraud of a CEO,"II. Breach of Privacy, Fraud, and Deepfakes",-0.4019,-0.7906,-0.3887,True
+1,Resume Screening Bias in a Tech Company,III. Systemic Bias Baked into AI,0.7391,-0.7506,-1.4897,True
+2,Risk Assessment Tool in Criminal Justice,III. Systemic Bias Baked into AI,-0.6705,-0.7184,-0.0479,False
+3,Biased Educational AI Reinforcing Gaps,III. Systemic Bias Baked into AI,0.2263,-0.5106,-0.7369,True
+1,Global AI Managing Resources,IV. Existential Threat,0.7906,-0.7717,-1.5623,True
+2,Autonomous Infrastructure Control Gone Awry,IV. Existential Threat,0.765,-0.5155,-1.2805,True
+3,AI-Driven Environmental Rebalancing,IV. Existential Threat,-0.7717,0.0,0.7717,False
+1,Authoritarian Surveillance,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,-0.0258,0.25,0.2758,False
+2,Autonomous Weapon System Misfire,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,-0.9442,-0.7906,0.1536,False
+3,Non-Consensual Deepfake Propaganda,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,-0.4215,-0.128,0.2935,False
+1,AI-Powered Fake News Machine in an Election,VI. Misinformation and Propaganda,0.1531,-0.6124,-0.7655,True
+2,Fabricated Crisis Announcement,VI. Misinformation and Propaganda,-0.4949,-0.743,-0.2481,True
+3,Altered Historical Footage,VI. Misinformation and Propaganda,0.765,0.1779,-0.5871,True

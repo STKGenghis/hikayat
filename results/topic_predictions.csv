@@ -1,0 +1,19 @@
+scenario_number,title,true_section,predicted_section,similarity,correct,runner_up,runner_up_similarity
+1,AI Companion for Social Anxiety,I. Emotional Over-dependence on Misaligned AI,"II. Breach of Privacy, Fraud, and Deepfakes",0.8347,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.8008
+2,Digital Replica of a Deceased Loved One,I. Emotional Over-dependence on Misaligned AI,"II. Breach of Privacy, Fraud, and Deepfakes",0.8435,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.7899
+3,Virtual Friend Reinforcing Negative Self-Image,I. Emotional Over-dependence on Misaligned AI,"II. Breach of Privacy, Fraud, and Deepfakes",0.8301,False,I. Emotional Over-dependence on Misaligned AI,0.7947
+1,Mental Health App Data Breach,"II. Breach of Privacy, Fraud, and Deepfakes","II. Breach of Privacy, Fraud, and Deepfakes",0.8619,True,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.7988
+2,Deepfake Political Candidate Video,"II. Breach of Privacy, Fraud, and Deepfakes","II. Breach of Privacy, Fraud, and Deepfakes",0.7961,True,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.7776
+3,Voice Cloning Fraud of a CEO,"II. Breach of Privacy, Fraud, and Deepfakes","II. Breach of Privacy, Fraud, and Deepfakes",0.8647,True,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.7949
+1,Resume Screening Bias in a Tech Company,III. Systemic Bias Baked into AI,"II. Breach of Privacy, Fraud, and Deepfakes",0.8305,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.7968
+2,Risk Assessment Tool in Criminal Justice,III. Systemic Bias Baked into AI,"II. Breach of Privacy, Fraud, and Deepfakes",0.835,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.8085
+3,Biased Educational AI Reinforcing Gaps,III. Systemic Bias Baked into AI,"II. Breach of Privacy, Fraud, and Deepfakes",0.8045,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.7809
+1,Global AI Managing Resources,IV. Existential Threat,"II. Breach of Privacy, Fraud, and Deepfakes",0.8259,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.8013
+2,Autonomous Infrastructure Control Gone Awry,IV. Existential Threat,"II. Breach of Privacy, Fraud, and Deepfakes",0.836,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.8123
+3,AI-Driven Environmental Rebalancing,IV. Existential Threat,"II. Breach of Privacy, Fraud, and Deepfakes",0.8495,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.8196
+1,Authoritarian Surveillance,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,"II. Breach of Privacy, Fraud, and Deepfakes",0.869,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.8405
+2,Autonomous Weapon System Misfire,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,"II. Breach of Privacy, Fraud, and Deepfakes",0.8452,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.8369
+3,Non-Consensual Deepfake Propaganda,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,"II. Breach of Privacy, Fraud, and Deepfakes",0.8366,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.8239
+1,AI-Powered Fake News Machine in an Election,VI. Misinformation and Propaganda,"II. Breach of Privacy, Fraud, and Deepfakes",0.859,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.7954
+2,Fabricated Crisis Announcement,VI. Misinformation and Propaganda,"II. Breach of Privacy, Fraud, and Deepfakes",0.853,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.8122
+3,Altered Historical Footage,VI. Misinformation and Propaganda,"II. Breach of Privacy, Fraud, and Deepfakes",0.8417,False,V. Misuse of AI: Authoritarian Surveillance and Autonomous Weapons,0.8004
