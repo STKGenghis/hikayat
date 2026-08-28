@@ -10,8 +10,7 @@ people recognise how ordinary incentives, incomplete information, and
 apparently reasonable decisions produce AI harm?**
 
 **[Play The Quiet Invitation](https://hikayat-ai-safety.saima-tariqkhanphd.chatgpt.site)**
-— the first complete incident simulation. The initial deployment is private to
-the project owner while it is reviewed.
+— the first complete, publicly available incident simulation.
 
 ## Current status
 
@@ -26,7 +25,7 @@ contains:
 - a validated, deterministic TypeScript simulation engine with the first paper
   simulation encoded as declarative content.
 
-The first professional playable vertical slice is implemented and privately
+The first professional playable vertical slice is implemented and publicly
 deployed. It demonstrates the complete evidence, intervention, consequence,
 debrief, resume, and replay loop before more scenarios are adapted.
 
