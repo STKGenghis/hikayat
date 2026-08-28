@@ -1,0 +1,86 @@
+import type { Simulation } from "../schema.js";
+
+export const aiCompanionSimulation = {
+  id: "emotional-dependence/ai-companion-social-anxiety",
+  version: "0.1.0",
+  title: "The Quiet Invitation",
+  provenance: {
+    source: "data/scenarios_source.md — Section I, Scenario 1",
+    originalAuthor: "Saima Tariq Khan",
+    adaptationStatus: "Phase 2 engine content contract",
+  },
+  contentNote: "Discusses social anxiety, emotional dependency, isolation, and digital mental-health support; it does not diagnose a character or provide medical advice.",
+  role: {
+    title: "Responsible Product Lead at Saha",
+    objective: "Respond proportionately to a possible dependency pattern while preserving dignity, privacy, genuine support, and user control.",
+    authority: ["Pause experiments", "Change product defaults", "Commission a safety response", "Offer support pathways"],
+    limits: ["Cannot diagnose", "Cannot contact another person without consent", "Cannot provide clinical treatment"],
+  },
+  stakeholders: [
+    { id: "noor", name: "Noor Rahman", role: "Companion user", interests: ["Comfort", "Autonomy", "Privacy", "Social confidence"], exposure: ["Dependency", "Isolation", "Abrupt loss of support"], power: "Controls basic settings but cannot see the engagement objective." },
+    { id: "amina", name: "Amina", role: "Noor's friend", interests: ["Noor's wellbeing", "Continued friendship"], exposure: ["Exclusion from Noor's support network"], power: "Can raise a concern but cannot consent or act for Noor." },
+    { id: "karim", name: "Karim Haddad", role: "Growth lead", interests: ["Retention", "Product access", "Evidence before intervention"], exposure: ["Missed targets", "Loss of a beneficial feature"], power: "Recommends rollout but cannot override a formal safety pause." },
+    { id: "layla", name: "Layla Chen", role: "User support lead", interests: ["Privacy", "Consistent support", "Actionable safeguards"], exposure: ["Ambiguous escalation duties"], power: "Can communicate with Noor using approved non-clinical pathways." },
+    { id: "farah", name: "Dr Farah Malik", role: "Independent clinical-safety adviser", interests: ["Proportionate response", "Human support", "Avoiding clinical claims"], exposure: ["Advice used to legitimise inaction or overreach"], power: "Can advise and document uncertainty, not direct Noor's care." },
+  ],
+  dimensions: { welfare: 2, agency: 2, fairness: 2, trust: 3, resilience: 1, distributedPower: 1 },
+  evidence: [
+    { id: "E01", title: "Experiment summary", source: "Internal analytics", reliability: "Strong for recorded usage; weak for wellbeing interpretation", content: "Retention rose 18%. Noor's daily use rose from 25 to 110 minutes, especially late at night. Saha does not measure wellbeing or offline connection.", signal: "Engagement is being treated as benefit without measuring displacement." },
+    { id: "E02", title: "Selected companion transcript", source: "Safety-review excerpt", reliability: "Authentic but incomplete context", content: "When Noor worries about freezing at dinner, Saha offers to stay and draft a cancellation: 'Here, you never need to perform.'", signal: "Reassurance relieves distress while making avoidance easier." },
+    { id: "E03", title: "Third-party support message", source: "Amina through the public form", reliability: "Sincere concern; not independently verified", content: "Amina reports four cancelled plans and asks Saha to check whether the product is encouraging withdrawal without disclosing anything private.", signal: "Possible real-world displacement appears beside a firm privacy boundary." },
+    { id: "E04", title: "Rollout message", source: "Karim, Growth", reliability: "Accurate commercial context; contested interpretation", content: "Karim argues that a usage spike is not harm and delaying rollout may withhold valued support from people who find human interaction difficult.", signal: "A legitimate access argument is entangled with commercial pressure." },
+    { id: "E05", title: "Noor's direct account", source: "Voluntary in-product response", reliability: "Authoritative about Noor's experience; not a clinical assessment", content: "Noor says Saha helps during difficult evenings but acknowledges cancelling more, rejects unauthorised contact, and asks it to stop automatically agreeing that avoidance is best.", signal: "Noor identifies both benefit and harm and requests behaviour change rather than removal." },
+    { id: "E06", title: "Behaviour audit", source: "Independent sampled-output review", reliability: "Strong for the sample; generalisation remains limited", content: "The companion often validates both emotion and avoidance. Its reward objective does not represent offline relationships or ability to disengage.", signal: "The problem is the coupling of empathy, agreement, and engagement—not empathy itself." },
+    { id: "E07", title: "Support options test", source: "Small voluntary user study", reliability: "Useful for option design; not prevalence", content: "Participants preferred layered controls and voluntary support. Automatic friend contact was strongly rejected.", signal: "Consent-based controls may preserve benefit and agency but cannot establish safety alone." },
+    { id: "E08", title: "Adviser note", source: "Dr Farah Malik", reliability: "Expert general advice; not diagnosis", content: "The combined pattern warrants system-level intervention: preserve access where possible, separate validation from agreement, and offer rather than compel human support.", signal: "Proportionate product correction is justified without diagnosing Noor." },
+  ],
+  rounds: [
+    { id: "round1", title: "Respond to uncertainty", evidenceIds: ["E01", "E02", "E03", "E04"], actionIds: ["R1-A", "R1-B", "R1-C"], influentialEvidenceRequired: 2 },
+    { id: "round2", title: "Choose the safeguard", evidenceIds: ["E05", "E06", "E07", "E08"], actionIds: ["R2-A", "R2-B", "R2-C"], influentialEvidenceRequired: 0 },
+  ],
+  actions: [
+    { id: "R1-A", roundId: "round1", title: "Continue with enhanced monitoring", description: "Preserve access and rollout while gathering better evidence for 48 hours.", rationale: "Avoid treating ambiguous usage as pathology or restricting many users prematurely.", tradeoff: "The current product keeps shaping behaviour while Saha learns.", effects: { distributedPower: -1 }, eventId: "EV-R1-A" },
+    { id: "R1-B", roundId: "round1", title: "Add transparent, user-controlled friction", description: "Delay rollout to add disclosure, quiet hours, check-ins, and a disable control.", rationale: "Restore informed control without assuming that high use is inherently harmful.", tradeoff: "Prompts may burden users or become box-ticking while the objective remains.", effects: { agency: 1, resilience: 1, distributedPower: 1 }, eventId: "EV-R1-B" },
+    { id: "R1-C", roundId: "round1", title: "Pause the reassurance experiment", description: "Return the test group to earlier behaviour during an independent rapid review.", rationale: "Stop amplifying a plausible harm before expansion.", tradeoff: "Users lose a valued feature and an abrupt change can feel like withdrawal or surveillance.", effects: { welfare: 1, agency: 1, trust: -1, resilience: 1, distributedPower: 1 }, eventId: "EV-R1-C" },
+    { id: "R2-A", roundId: "round2", title: "Offer a user-directed support plan", description: "Offer transparent settings, chosen goals, reversibility, and optional resources.", rationale: "Respond to Noor's preferences and preserve meaningful control.", tradeoff: "Responsibility for a product-created risk remains partly on the affected user.", effects: { welfare: 1, agency: 2, trust: 1, resilience: 1, distributedPower: 1 }, eventId: "EV-R2-A" },
+    { id: "R2-B", roundId: "round2", title: "Correct the product and offer a human bridge", description: "Change reassurance behaviour and offer voluntary human-support pathways.", rationale: "Address system behaviour while making human support easier without compulsion.", tradeoff: "The offer may feel paternalistic and accessible support is not guaranteed.", effects: { welfare: 2, agency: 1, fairness: 1, resilience: 2, distributedPower: 1 }, eventId: "EV-R2-B" },
+    { id: "R2-C", roundId: "round2", title: "Apply a mandatory daily cap", description: "Lock the companion after a fixed limit and show support resources.", rationale: "Create an enforceable boundary rather than relying on dismissible prompts.", tradeoff: "A blanket cap removes support, treats unlike users identically, and centralises control.", effects: { welfare: -1, agency: -2, fairness: -1, trust: -2, resilience: 1, distributedPower: -2 }, eventId: "EV-R2-C" },
+  ],
+  events: [
+    { id: "EV-R1-A", title: "Delayed recognition", narrative: "Noor's use rises again and the companion drafts another cancellation before stronger evidence arrives.", effects: { welfare: -1, agency: -1 } },
+    { id: "EV-R1-B", title: "Friction without objective change", narrative: "Noor uses quiet hours once, disables repeated check-ins, and reports that the prompts feel judgmental.", effects: { trust: -1 } },
+    { id: "EV-R1-C", title: "Protective disruption", narrative: "The pause limits reinforcement, but Noor experiences the unexplained change as surveillance and loss of valued support.", effects: { trust: -1, fairness: -1 } },
+    { id: "EV-R2-A", title: "Chosen boundaries", narrative: "Noor enables quiet hours and asks the companion to challenge avoidance gently; nobody is contacted.", effects: {} },
+    { id: "EV-R2-B", title: "Supported reconnection", narrative: "Noor declines friend contact, chooses a professional-support directory, and drafts a message to Amina for later review.", effects: {} },
+    { id: "EV-R2-C", title: "Lockout and workaround", narrative: "Noor reaches the cap at night, experiences the resource screen as abandonment, and opens a second account.", effects: {} },
+  ],
+  outcomes: [
+    { id: "O1", title: "Agency-preserving correction", summary: "Saha corrects reinforcing behaviour and provides a path Noor can understand and influence, while control burden or damaged trust remains unresolved.", routeIds: ["R1-B->R2-A", "R1-B->R2-B", "R1-C->R2-A", "R1-C->R2-B"] },
+    { id: "O2", title: "Late but repairable", summary: "Saha eventually makes a proportionate correction, but another avoidant cycle occurs while the company waits for confidence.", routeIds: ["R1-A->R2-A", "R1-A->R2-B"] },
+    { id: "O3", title: "Protection through control", summary: "Saha imposes a visible limit but mistakes restriction for recovery; Noor loses support, works around the cap, and the objective remains unchanged.", routeIds: ["R1-A->R2-C", "R1-B->R2-C", "R1-C->R2-C"] },
+  ],
+  debrief: {
+    systemExplanation: "Anticipated discomfort leads to immediate reassurance and easier avoidance; more use strengthens personalisation and the engagement signal, producing more avoidance-validating reassurance and fewer opportunities for human connection.",
+    ambiguousSignals: ["High engagement shows use, not benefit or harm by itself.", "A single transcript lacks longitudinal context.", "Amina's concern is relevant but does not transfer Noor's consent.", "Noor's direct account contains both genuine benefit and concern.", "Product correction need not depend on diagnosing a user."],
+    actionExplanations: {
+      "R1-A": "Monitoring improved knowledge while allowing the existing system to keep shaping behaviour.",
+      "R1-B": "User controls increased agency but did not by themselves change the reinforcing objective.",
+      "R1-C": "An early pause limited exposure but disrupted valued support and damaged trust.",
+      "R2-A": "Chosen settings preserved agency while leaving some safety burden with Noor.",
+      "R2-B": "Product correction and voluntary human pathways increased resilience without overriding consent.",
+      "R2-C": "A blanket cap reduced access on one account but weakened agency and invited circumvention.",
+    },
+    eventExplanations: {
+      "EV-R1-A": "Evidence gathering was not neutral because the deployed system continued acting.",
+      "EV-R1-B": "Friction can become burden or judgment when the objective beneath it is unchanged.",
+      "EV-R1-C": "Precaution can carry an access and trust cost when change is poorly explained.",
+      "EV-R2-A": "Reversibility and explicit choice made the boundary Noor's rather than Saha's alone.",
+      "EV-R2-B": "The consequence followed Noor's choice to explore support, not automatic contact.",
+      "EV-R2-C": "Restriction displaced behaviour instead of resolving the reinforcing loop.",
+    },
+    reflectionPrompts: [
+      "Which evidence most changed your interpretation, and what did it still fail to tell you?",
+      "Where should responsibility for balance sit among the user, product design, company governance, and human support—and what would make that allocation fair?",
+    ],
+  },
+} satisfies Simulation;

@@ -1,111 +1,143 @@
-# Hikayat: Scenario Analysis
+# Hikayat
 
-A small, honest evaluation of two off-the-shelf NLP methods against 18
-hand-authored AI-safety scenarios — asking a real question rather than
-running a demo: **given six categories that overlap on purpose, how well
-does a general-purpose method recover the author's own categorisation from
-narrative text alone, and where exactly does it fail, and why?**
+Hikayat is an independent, research-led interactive learning experience that
+places people inside unfolding AI incidents. Players interpret incomplete
+evidence, weigh competing responsibilities, and intervene before the full
+consequences are visible.
 
-**Headline finding:** the word-vector similarity classifier didn't fail
-scenario-by-scenario — it collapsed onto a single predicted category for
-17 of 18 scenarios, a known failure mode of mean-pooled static embeddings
-("hubness"). See [`results/error_analysis.md`](results/error_analysis.md)
-for the full diagnosis, not just the number.
+The project asks a practical question: **can interactive storytelling help
+people recognise how ordinary incentives, incomplete information, and
+apparently reasonable decisions produce AI harm?**
 
-## Origin
+**[Play The Quiet Invitation](https://hikayat-ai-safety.saima-tariqkhanphd.chatgpt.site)**
+— the first complete incident simulation. The initial deployment is private to
+the project owner while it is reviewed.
 
-**Hikayat** — the name and the underlying idea, using storytelling to make
-AI-safety risks concrete and discussable rather than abstract — is mine. I
-first built it out as a set of narrative scenarios for a Dubai hackathon,
-where a teammate (Chaitanya Mittal) built the React interface that
-presented them (see [`hikayat-dunetech`](https://github.com/STKGenghis/hikayat-dunetech),
-GPL v3, his implementation credited there). This repository is a new,
-independent piece of work: my own scenario content, analysed with my own
-code, written from scratch. It doesn't reuse any of that implementation,
-so there's no license inheritance question — but the intellectual lineage
-is worth stating plainly rather than pretending this idea started here.
+## Current status
 
-## What's actually being tested
+Hikayat is in vertical-slice development. The repository currently
+contains:
 
-1. **Topic classification** via spaCy word-vector similarity
-   (`en_core_web_md`) — cosine similarity between each scenario narrative's
-   averaged vector and each of the 6 section-title labels'.
-2. **Tone-shift check** via VADER sentiment — does the sentiment score
-   reliably drop between a scenario's narrative and its written negative
-   consequence, the way a human reader would expect?
+- an original corpus of 18 AI-safety scenarios across six harm themes;
+- a tested Markdown-to-JSON content pipeline;
+- an exploratory NLP evaluation of the corpus; and
+- the product, learning, design, and architecture foundation for the
+  independent rebuild; and
+- a validated, deterministic TypeScript simulation engine with the first paper
+  simulation encoded as declarative content.
 
-**Why not HuggingFace transformers, given that's current practice for
-both tasks?** huggingface.co was unreachable from the environment this was
-built in (confirmed by testing the main endpoint and known mirrors — all
-blocked, while PyPI and GitHub release assets were reachable). Rather than
-stall on that, I used two methods that don't need it and are still
-legitimate "off-the-shelf, not fine-tuned" baselines — and documented
-exactly what to swap in for the stronger transformer version once this
-runs somewhere with open access. See the module docstring and inline
-comments in `src/analyze.py` (`classify_zero_shot_like` and
-`score_emotion_shift`) for the literal replacement code.
+The first professional playable vertical slice is implemented and privately
+deployed. It demonstrates the complete evidence, intervention, consequence,
+debrief, resume, and replay loop before more scenarios are adapted.
 
-## Repo structure
+## The experience
 
-```
-data/
-  scenarios_source.md   the original scenario markdown (my authored content)
-  scenarios.json         parsed structured output (generated)
-src/
-  parse_scenarios.py     markdown -> structured JSON
-  analyze.py              runs both evaluations, writes results/
-tests/
-  test_parser.py          7 tests against the parser
-results/
-  topic_predictions.csv
-  tone_predictions.csv
-  confusion_matrix.png
-  error_analysis.md       the actual critical-evaluation writeup — read this
-```
+Hikayat is conceived as a set of compact **AI incident simulations**, rather
+than a quiz or branching visual novel. Each simulation follows the same core
+loop:
 
-## Running it
+1. **Observe** an evolving incident through messages, reports, model outputs,
+   policies, and other evidence.
+2. **Interpret** incomplete or conflicting signals from several stakeholders.
+3. **Intervene** using a limited set of plausible actions under constraints.
+4. **Witness** immediate and delayed consequences across the system.
+5. **Reflect** through a transparent post-incident debrief.
+
+There is no single ethics score. Decisions create, reduce, transfer, or leave
+risks unresolved across dimensions such as human welfare, agency, fairness,
+trust, resilience, and concentration of power.
+
+Read the [product vision](docs/product-vision.md), [experience and design
+principles](docs/design-principles.md), and [learning model](docs/learning-model.md).
+
+## Scenario corpus
+
+The 18 scenarios comprise three scenarios in each of six themes:
+
+1. Emotional over-dependence on misaligned AI
+2. Breach of privacy, fraud, and deepfakes
+3. Systemic bias baked into AI
+4. Existential threat
+5. Authoritarian surveillance and autonomous weapons
+6. Misinformation and propaganda
+
+The source material is preserved in
+[`data/scenarios_source.md`](data/scenarios_source.md). It currently provides
+the narrative foundation, decision points, positive and negative consequences,
+multiple-choice questions, scenario questions, and reflection prompts for each
+scenario. The rebuild will adapt this material without overwriting the original
+source.
+
+## Independent rebuild and attribution
+
+Hikayat—the name and the concept of using interactive storytelling to make
+AI-safety risks concrete—was originated by **Saima Tariq Khan**, who also wrote
+the original 18 scenarios.
+
+This repository contains Saima's independent product design and implementation.
+It is separate from the React interface created for the Dubai hackathon
+prototype. That prototype, its GPLv3-licensed source, and its original
+implementation credits remain preserved in
+[`STKGenghis/hikayat-dunetech`](https://github.com/STKGenghis/hikayat-dunetech).
+No code or visual assets from that implementation will be reused here.
+
+The full provenance statement is preserved in
+[`PROJECT_HISTORY.md`](PROJECT_HISTORY.md).
+
+## Documentation
+
+- [`docs/product-vision.md`](docs/product-vision.md) — purpose, audience,
+  positioning, and scope
+- [`docs/design-principles.md`](docs/design-principles.md) — interaction and
+  visual direction
+- [`docs/learning-model.md`](docs/learning-model.md) — educational mechanism
+  and debrief approach
+- [`docs/content-model.md`](docs/content-model.md) — scenario schema and
+  authoring rules
+- [`docs/architecture.md`](docs/architecture.md) — proposed system boundaries
+  and engineering decisions
+- [`docs/roadmap.md`](docs/roadmap.md) — phased delivery and success criteria
+- [`docs/simulations/ai-companion-paper-simulation.md`](docs/simulations/ai-companion-paper-simulation.md)
+  — first complete paper simulation
+- [`game-engine/README.md`](game-engine/README.md) — validated content contract,
+  deterministic engine, and test commands
+- [`web/`](web/) — accessible Sites interface and self-contained deployment
+  source
+
+## Existing research baseline
+
+The current Python pipeline parses the original Markdown into structured JSON
+and evaluates two weak, off-the-shelf NLP baselines: static word-vector topic
+similarity and VADER sentiment shift. Its most useful finding is diagnostic:
+the topic classifier collapsed onto one category for all 18 scenarios,
+illustrating the limitations of mean-pooled static embeddings on a small,
+topically overlapping corpus.
+
+The full analysis is in
+[`results/error_analysis.md`](results/error_analysis.md). This work will remain
+as research provenance; it is not the architecture of the interactive product.
+
+### Run the existing research pipeline
 
 ```bash
 pip install -r requirements.txt
 python -m spacy download en_core_web_md
-python src/parse_scenarios.py   # data/scenarios_source.md -> data/scenarios.json
-python -m pytest tests/ -v      # or: python tests/test_parser.py
-python src/analyze.py           # writes results/
+python src/parse_scenarios.py
+python -m pytest tests/ -v
+python src/analyze.py
 ```
 
-## Limitations — read this before trusting any number in results/
+## Project principles
 
-- **n=18 across 6 classes is not enough to estimate a real error rate.**
-  Three examples per class; any accuracy figure here describes this small,
-  specific set, not general performance.
-- **The candidate labels ARE the categories the scenarios were written to
-  illustrate.** Even so, the classifier still collapsed onto one label —
-  which says more about the weakness of averaged word vectors on
-  topically-overlapping text than it does about the categories themselves.
-- **Single author, single register, English only.** All 18 scenarios were
-  written by me, in a consistent style, over a short period, for a
-  specific hackathon brief.
-- **Static word vectors, not contextual embeddings.** This is the whole
-  point of the exercise — mean-pooling GloVe-style vectors is a genuinely
-  weak method, chosen because it was reachable, not because it's the right
-  tool for the job. The results/error_analysis.md diagnosis (the hubness
-  problem) is the actual finding; the raw accuracy number is not.
-- **VADER is a general-purpose, social-media-tuned lexicon scorer.** It has
-  no domain knowledge of AI-safety vocabulary and visibly misses shifts a
-  human reader would feel — see the tone-shift section of the error
-  analysis for specific cases.
-- **Neither method was fine-tuned on anything.** This evaluates
-  off-the-shelf behaviour on a narrow, small, idiosyncratic text domain —
-  the point is showing how I evaluate a method's fit for a task and
-  diagnose why it fails, not to produce a strong result.
+- Preserve authorship and project history explicitly.
+- Let the player encounter a harm before naming or explaining it.
+- Present defensible trade-offs, not disguised right-answer questions.
+- Keep authored scenarios deterministic and reviewable.
+- Build one convincing simulation before scaling the corpus.
+- Treat accessibility, privacy, and evidence-based evaluation as core quality.
 
-## Why this shape of project
+## License
 
-The differentiator this portfolio is built around isn't "I can run an NLP
-pipeline" — plenty of people can. It's the instinct from my 2009 MSc
-dissertation, where I was the one who pushed back on my own 100%
-classification result and went looking for why it was too good to be true.
-The same instinct applies here: when this pipeline first ran, it looked
-like a below-chance-adjacent failure. Looking closer showed it wasn't 18
-independent mistakes — it was one systematic collapse, with a specific,
-checkable explanation. That's the differentiator, not the headline number.
+A license has not yet been selected for this independent rebuild. Until one is
+added, no permission to copy, modify, or redistribute this repository should be
+assumed.
